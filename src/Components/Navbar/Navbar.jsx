@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import './Navbar.css'
 
 const Navbar = () => {
     const [isProductOpen, setIsProductOpen] = useState(false);
@@ -13,7 +14,6 @@ const Navbar = () => {
                 <div className="navbar shadow-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
-                            {/* Hamburger Icon */}
                             <div
                                 tabIndex={0}
                                 role="button"
@@ -80,7 +80,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
-                        <NavLink to="/" className="btn btn-ghost text-xl">Digital<span className='text-orange-400'>Xpress</span></NavLink>
+                        <Link to="/" className="btn btn-ghost text-xl hover:bg-black">Digital<span className='text-orange-400'>Xpress</span></Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
