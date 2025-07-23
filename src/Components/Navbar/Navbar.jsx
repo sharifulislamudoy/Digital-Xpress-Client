@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router';
 import './Navbar.css'
+import Image from '../../assets/DigitalXpress3.png'
+
 
 const Navbar = () => {
     const [isProductOpen, setIsProductOpen] = useState(false);
+    const [isDealsOpen, setIsDealsOpen] = useState(false);
 
     const toggleProduct = () => setIsProductOpen(!isProductOpen);
+    const toggleDeals = () => setIsDealsOpen(!isDealsOpen);
 
     return (
         <div className='bg-black sticky top-0 inset-0 backdrop-blur-2xl z-50'>
@@ -41,6 +45,8 @@ const Navbar = () => {
                                 <li>
                                     <NavLink to="/">Home</NavLink>
                                 </li>
+
+                                {/* Products Dropdown */}
                                 <li>
                                     <div
                                         className="flex items-center justify-between cursor-pointer"
@@ -50,7 +56,6 @@ const Navbar = () => {
                                         {isProductOpen ? <FaChevronUp /> : <FaChevronDown />}
                                     </div>
 
-                                    {/* Submenu */}
                                     {isProductOpen && (
                                         <ul className="pl-4 pt-2">
                                             <li>
@@ -69,9 +74,43 @@ const Navbar = () => {
                                     )}
                                 </li>
 
+                                {/* Deals Dropdown */}
                                 <li>
-                                    <NavLink to="/deals">Deals</NavLink>
+                                    <div
+                                        className="flex items-center justify-between cursor-pointer"
+                                        onClick={toggleDeals}
+                                    >
+                                        <span>Deals</span>
+                                        {isDealsOpen ? <FaChevronUp /> : <FaChevronDown />}
+                                    </div>
+
+                                    {isDealsOpen && (
+                                        <ul className="pl-4 pt-2">
+                                            <li>
+                                                <NavLink to="/deals/hot-deals">Hot Deals</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/flash-sale">Flash Sale</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/bundle-offers">Bundle Offers</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/mobile-phones">Mobile Phones</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/laptops-computers">Laptops & Computers</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/gadgets-accessories">Gadgets & Mobile Accessories</NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink to="/deals/home-appliances">Home Appliances</NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
                                 </li>
+
                                 <li>
                                     <NavLink to="/about">About</NavLink>
                                 </li>
@@ -79,8 +118,12 @@ const Navbar = () => {
                                     <NavLink to="/contact">Contact</NavLink>
                                 </li>
                             </ul>
+
                         </div>
-                        <Link to="/" className="btn btn-ghost text-xl hover:bg-black">Digital<span className='text-orange-400'>Xpress</span></Link>
+                        <div className='flex items-center'>
+                            <img src={Image} className='h-10 w-auto ' alt="Logo" />
+                            <span className='text-white text-xl -ml-2'>igital <i className='text-orange-400'>Xpress</i></span>
+                        </div>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
@@ -96,7 +139,36 @@ const Navbar = () => {
                                     </ul>
                                 </details>
                             </li>
-                            <li><NavLink to="/deals">Deals</NavLink></li>
+                            <li>
+                                <details>
+                                    <summary>Deals</summary>
+                                    <ul className="p-2 w-60 bg-black text-white space-y-1">
+                                        <li>
+                                            <NavLink to="/deals/hot-deals">Hot Deals</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/deals/flash-sale">Flash Sale</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/deals/bundle-offers">Bundle Offers</NavLink>
+                                        </li>
+
+                                        <li>
+                                            <NavLink to="/deals/mobile-phones">Mobile Phones</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/deals/laptops-computers">Laptops & Computers</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/deals/gadgets-accessories">Gadgets & Mobile Accessories</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/deals/home-appliances">Home Appliances</NavLink>
+                                        </li>
+                                    </ul>
+                                </details>
+
+                            </li>
                             <li><NavLink to="/about">About</NavLink></li>
                             <li><NavLink to="/contact">Contact</NavLink></li>
                         </ul>

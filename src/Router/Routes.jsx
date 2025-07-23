@@ -3,6 +3,7 @@ import {
 } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
+import AuthForm from "../Pages/AuthForm";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path: 'login',
+        Component: AuthForm,
       }
     ]
   },
