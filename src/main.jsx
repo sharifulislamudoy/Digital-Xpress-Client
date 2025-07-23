@@ -5,9 +5,12 @@ import {
 } from "react-router";
 import { router } from './Router/Routes';
 import './index.css'
+import { ReTitleProvider } from 're-title';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ReTitleProvider defaultTitle='Digital Xpress'>
+      <RouterProvider router={router} />
+    </ReTitleProvider>
   </StrictMode>,
 )
