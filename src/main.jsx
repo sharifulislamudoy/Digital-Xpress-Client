@@ -6,11 +6,14 @@ import {
 import { router } from './Router/Routes';
 import './index.css'
 import { ReTitleProvider } from 're-title';
+import AuthProvider from './Components/Contexts/AuthProvider';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ReTitleProvider defaultTitle='Digital Xpress'>
-      <RouterProvider router={router} />
-    </ReTitleProvider>
+    <AuthProvider>
+      <ReTitleProvider defaultTitle='Digital Xpress'>
+        <RouterProvider router={router} />
+      </ReTitleProvider>
+    </AuthProvider>
   </StrictMode>,
 )

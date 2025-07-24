@@ -1,15 +1,28 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BackGround from "../assets/Auth-Image.png";
 import Image from "../assets/DigitalXpress3.png";
-import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUserCircle, FaGoogle, FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../Components/Contexts/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [authMethod, setAuthMethod] = useState("email"); // 'email' or 'phone'
   const [profileImage, setProfileImage] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const fileInputRef = useRef(null);
+
+  const {
+    signUpWithEmail,
+    loginWithEmail,
+    loginWithGoogle,
+    loginWithFacebook,
+    loading,
+  } = useContext(AuthContext);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -26,14 +39,140 @@ const AuthForm = () => {
     fileInputRef.current.click();
   };
 
+  const handleEmailAuth = async (e) => {
+    e.preventDefault();
+    try {
+      if (isLogin) {
+        await loginWithEmail(email, password);
+        toast.success("Login successful!", {
+          style: {
+            background: "#000000",
+            color: "#ffffff",
+            border: "1px solid #f97316", 
+          },
+          iconTheme: {
+            primary: "#f97316", 
+            secondary: "#ffffff", 
+          },
+        });
+      } else {
+        await signUpWithEmail(email, password);
+        toast.success("Signup successful!", {
+          style: {
+            background: "#000000",
+            color: "#ffffff",
+            border: "1px solid #f97316", 
+          },
+          iconTheme: {
+            primary: "#f97316",
+            secondary: "#ffffff", 
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Email auth error:", error);
+      toast.error(error.message || "Authentication failed.", {
+        style: {
+          background: "#1f2937",
+          color: "#fff",
+          border: "1px solid #ef4444",
+        },
+        iconTheme: {
+          primary: "#ef4444",
+          secondary: "#fff",
+        },
+      });
+    }
+  };
+
+  const handleGoogleAuth = async () => {
+    try {
+      await loginWithGoogle();
+      toast.success("Google Login successful!", {
+        style: {
+          background: "#000000",
+          color: "#ffffff",
+          border: "1px solid #f97316", 
+        },
+        iconTheme: {
+          primary: "#f97316", 
+          secondary: "#ffffff", 
+        },
+      });
+    } catch (error) {
+      console.error("Google auth error:", error);
+      toast.error(error.message || "Google login failed.", {
+        style: {
+          background: "#1f2937",
+          color: "#fff",
+          border: "1px solid #ef4444",
+        },
+        iconTheme: {
+          primary: "#ef4444",
+          secondary: "#fff",
+        },
+      });
+    }
+  };
+
+  const handleFacebookAuth = async () => {
+    try {
+      await loginWithFacebook();
+      toast.success("Facebook Login successful!", {
+        style: {
+          background: "#000000",
+          color: "#ffffff",
+          border: "1px solid #f97316", 
+        },
+        iconTheme: {
+          primary: "#f97316", 
+          secondary: "#ffffff", 
+        },
+      });
+    } catch (error) {
+      console.error("Facebook auth error:", error);
+      toast.error(error.message || "Facebook login failed.", {
+        style: {
+          background: "#1f2937",
+          color: "#fff",
+          border: "1px solid #ef4444",
+        },
+        iconTheme: {
+          primary: "#ef4444",
+          secondary: "#fff",
+        },
+      });
+    }
+  };
+
   return (
     <div
-      className="h-screen flex items-center justify-center px-4 py-10 md:bg-cover md:bg-center"
+      className="h-screen flex items-center justify-center px-4 py-5 md:bg-cover md:bg-center"
       style={{ backgroundImage: `url(${BackGround})` }}
     >
+      {/* Add ToastContainer at the root of your component */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastStyle={{
+          background: "#000000", 
+          color: "#ffffff",
+          border: "1px solid #f97316",
+          borderRadius: "0.5rem", 
+        }}
+        progressStyle={{
+          background: "#fdba74",
+        }}
+      />
       <div className="relative w-11/12 mx-auto rounded-3xl shadow-2xl border border-white/20 bg-white/5 backdrop-blur-2xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 h-[550px]">
-
+        <div className="grid grid-cols-1 md:grid-cols-2 h-[560px]">
           {/* LEFT SIDE INFO (for login) */}
           {isLogin ? (
             <div className="hidden md:flex items-center justify-center p-8">
@@ -107,89 +246,52 @@ const AuthForm = () => {
                     </button>
                   </div>
 
-                  <form className="space-y-4">
+                  <form onSubmit={handleEmailAuth} className="space-y-4">
                     <input
                       type="text"
                       placeholder="Full Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
+                      required={!isLogin}
+                    />
+
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
                       required
                     />
 
-                    <div className="flex space-x-2">
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pr-10"
+                        required
+                      />
                       <button
                         type="button"
-                        className={`flex-1 py-2 px-3 rounded-md font-medium text-sm ${authMethod === 'email' ? 'bg-orange-500 text-white' : 'bg-white/10 text-white/70'}`}
-                        onClick={() => setAuthMethod('email')}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
+                        onClick={() => setShowPassword(!showPassword)}
                       >
-                        Email
-                      </button>
-                      <button
-                        type="button"
-                        className={`flex-1 py-2 px-3 rounded-md font-medium text-sm ${authMethod === 'phone' ? 'bg-orange-500 text-white' : 'bg-white/10 text-white/70'}`}
-                        onClick={() => setAuthMethod('phone')}
-                      >
-                        Phone
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
                       </button>
                     </div>
 
-                    <AnimatePresence mode="wait">
-                      {authMethod === 'email' ? (
-                        <motion.div
-                          key="signup-email"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <input
-                            type="email"
-                            placeholder="Email"
-                            className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
-                            required
-                          />
-                          <div className="relative mt-4">
-                            <input
-                              type={showPassword ? "text" : "password"}
-                              placeholder="Password"
-                              className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pr-10"
-                              required
-                            />
-                            <button
-                              type="button"
-                              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
-                              onClick={() => setShowPassword(!showPassword)}
-                            >
-                              {showPassword ? <FaEyeSlash /> : <FaEye />}
-                            </button>
-                          </div>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="signup-phone"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="relative">
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-white/70">
-                              +880
-                            </div>
-                            <input
-                              type="tel"
-                              placeholder="Phone Number"
-                              className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pl-14"
-                              required
-                            />
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30">
-                      {authMethod === 'phone' ? 'Send OTP' : 'Register'}
+                    <button
+                      type="submit"
+                      className="btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30"
+                      disabled={loading}
+                    >
+                      {loading ? 'Processing...' : 'Register'}
                     </button>
                   </form>
+
                   <p className="text-sm mt-4 text-center text-white/80">
                     Already have an account?{" "}
                     <button
@@ -218,83 +320,59 @@ const AuthForm = () => {
                 >
                   <h2 className="text-3xl font-bold text-white mb-6">Login</h2>
 
-                  <div className="flex space-x-2 mb-4">
+                  <form onSubmit={handleEmailAuth} className="space-y-5">
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
+                      required
+                    />
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pr-10"
+                        required
+                      />
+                      <button
+                        type="button"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                      </button>
+                    </div>
+
                     <button
-                      type="button"
-                      className={`flex-1 py-2 px-3 rounded-md font-medium text-sm ${authMethod === 'email' ? 'bg-orange-500 text-white' : 'bg-white/10 text-white/70'}`}
-                      onClick={() => setAuthMethod('email')}
+                      type="submit"
+                      className="mt-5 btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30"
+                      disabled={loading}
                     >
-                      Email
+                      {loading ? 'Processing...' : 'Login'}
+                    </button>
+                  </form>
+
+                  <div className="flex justify-center space-x-4 mt-4">
+                    <button
+                      onClick={handleGoogleAuth}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+                      disabled={loading}
+                    >
+                      <FaGoogle className="text-xl" />
                     </button>
                     <button
-                      type="button"
-                      className={`flex-1 py-2 px-3 rounded-md font-medium text-sm ${authMethod === 'phone' ? 'bg-orange-500 text-white' : 'bg-white/10 text-white/70'}`}
-                      onClick={() => setAuthMethod('phone')}
+                      onClick={handleFacebookAuth}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+                      disabled={loading}
                     >
-                      Phone
+                      <FaFacebook className="text-xl" />
                     </button>
                   </div>
 
-                  <form>
-                    <AnimatePresence mode="wait">
-                      {authMethod === 'email' ? (
-                        <motion.div
-                          key="login-email"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          transition={{ duration: 0.3 }}
-                          className="space-y-5"
-                        >
-                          <input
-                            type="email"
-                            placeholder="Email"
-                            className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
-                            required
-                          />
-                          <div className="relative">
-                            <input
-                              type={showPassword ? "text" : "password"}
-                              placeholder="Password"
-                              className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pr-10"
-                              required
-                            />
-                            <button
-                              type="button"
-                              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white"
-                              onClick={() => setShowPassword(!showPassword)}
-                            >
-                              {showPassword ? <FaEyeSlash /> : <FaEye />}
-                            </button>
-                          </div>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="login-phone"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="relative">
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-white/70">
-                              +880
-                            </div>
-                            <input
-                              type="tel"
-                              placeholder="Phone Number"
-                              className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 pl-14"
-                              required
-                            />
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <button className="mt-5 btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30">
-                      {authMethod === 'phone' ? 'Send OTP' : 'Login'}
-                    </button>
-                  </form>
                   <p className="text-sm mt-4 text-center text-white/80">
                     Don't have an account?{" "}
                     <button
