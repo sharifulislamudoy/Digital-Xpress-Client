@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: 'login',
+        path: 'authentication',
         Component: AuthForm,
       }
     ]

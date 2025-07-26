@@ -1,147 +1,60 @@
-import { useState, useRef, useContext } from "react";
+import { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BackGround from "../assets/Auth-Image.png";
 import Image from "../assets/DigitalXpress3.png";
 import { FaEye, FaEyeSlash, FaUserCircle, FaGoogle, FaFacebook } from "react-icons/fa";
-import { AuthContext } from "../Components/Contexts/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../Components/Contexts/AuthProvider";
 
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const fileInputRef = useRef(null);
-
   const {
-    signUpWithEmail,
+    registerWithEmail,
     loginWithEmail,
     loginWithGoogle,
     loginWithFacebook,
     loading,
   } = useContext(AuthContext);
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerFileInput = () => {
-    fileInputRef.current.click();
-  };
+  // Add form states
+  const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmailAuth = async (e) => {
     e.preventDefault();
     try {
       if (isLogin) {
         await loginWithEmail(email, password);
-        toast.success("Login successful!", {
-          style: {
-            background: "#000000",
-            color: "#ffffff",
-            border: "1px solid #f97316", 
-          },
-          iconTheme: {
-            primary: "#f97316", 
-            secondary: "#ffffff", 
-          },
-        });
+        toast.success("Login successful!");
       } else {
-        await signUpWithEmail(email, password);
-        toast.success("Signup successful!", {
-          style: {
-            background: "#000000",
-            color: "#ffffff",
-            border: "1px solid #f97316", 
-          },
-          iconTheme: {
-            primary: "#f97316",
-            secondary: "#ffffff", 
-          },
-        });
+        await registerWithEmail(email, password, name, imageUrl, phone);
+        toast.success("Registration successful!");
       }
-    } catch (error) {
-      console.error("Email auth error:", error);
-      toast.error(error.message || "Authentication failed.", {
-        style: {
-          background: "#1f2937",
-          color: "#fff",
-          border: "1px solid #ef4444",
-        },
-        iconTheme: {
-          primary: "#ef4444",
-          secondary: "#fff",
-        },
-      });
+    } catch (err) {
+      toast.error(err.message || "Authentication failed");
     }
   };
 
   const handleGoogleAuth = async () => {
     try {
       await loginWithGoogle();
-      toast.success("Google Login successful!", {
-        style: {
-          background: "#000000",
-          color: "#ffffff",
-          border: "1px solid #f97316", 
-        },
-        iconTheme: {
-          primary: "#f97316", 
-          secondary: "#ffffff", 
-        },
-      });
-    } catch (error) {
-      console.error("Google auth error:", error);
-      toast.error(error.message || "Google login failed.", {
-        style: {
-          background: "#1f2937",
-          color: "#fff",
-          border: "1px solid #ef4444",
-        },
-        iconTheme: {
-          primary: "#ef4444",
-          secondary: "#fff",
-        },
-      });
+      toast.success("Logged in with Google!");
+    } catch (err) {
+      toast.error(err.message || "Google login failed");
     }
   };
 
   const handleFacebookAuth = async () => {
     try {
       await loginWithFacebook();
-      toast.success("Facebook Login successful!", {
-        style: {
-          background: "#000000",
-          color: "#ffffff",
-          border: "1px solid #f97316", 
-        },
-        iconTheme: {
-          primary: "#f97316", 
-          secondary: "#ffffff", 
-        },
-      });
-    } catch (error) {
-      console.error("Facebook auth error:", error);
-      toast.error(error.message || "Facebook login failed.", {
-        style: {
-          background: "#1f2937",
-          color: "#fff",
-          border: "1px solid #ef4444",
-        },
-        iconTheme: {
-          primary: "#ef4444",
-          secondary: "#fff",
-        },
-      });
+      toast.success("Logged in with Facebook!");
+    } catch (err) {
+      toast.error(err.message || "Facebook login failed");
     }
   };
 
@@ -150,7 +63,6 @@ const AuthForm = () => {
       className="h-screen flex items-center justify-center px-4 py-5 md:bg-cover md:bg-center"
       style={{ backgroundImage: `url(${BackGround})` }}
     >
-      {/* Add ToastContainer at the root of your component */}
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -162,10 +74,10 @@ const AuthForm = () => {
         draggable
         pauseOnHover
         toastStyle={{
-          background: "#000000", 
+          background: "#000000",
           color: "#ffffff",
           border: "1px solid #f97316",
-          borderRadius: "0.5rem", 
+          borderRadius: "0.5rem",
         }}
         progressStyle={{
           background: "#fdba74",
@@ -218,32 +130,15 @@ const AuthForm = () => {
                 >
                   <h2 className="text-3xl font-bold text-white mb-6">Sign Up</h2>
 
-                  {/* Profile Image Upload */}
+                  {/* Profile Image Display */}
                   <div className="flex flex-col items-center mb-4">
-                    <div
-                      className="w-20 h-20 rounded-full bg-white/10 border-2 border-orange-400 flex items-center justify-center cursor-pointer overflow-hidden"
-                      onClick={triggerFileInput}
-                    >
-                      {profileImage ? (
-                        <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                    <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-orange-400 flex items-center justify-center overflow-hidden">
+                      {imageUrl ? (
+                        <img src={imageUrl} alt="Profile" className="w-full h-full object-cover" />
                       ) : (
                         <FaUserCircle className="text-white text-5xl" />
                       )}
                     </div>
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      onChange={handleImageUpload}
-                      accept="image/*"
-                      className="hidden"
-                    />
-                    <button
-                      type="button"
-                      onClick={triggerFileInput}
-                      className="text-xs text-orange-400 mt-2 hover:underline"
-                    >
-                      {profileImage ? "Change Photo" : "Upload Photo"}
-                    </button>
                   </div>
 
                   <form onSubmit={handleEmailAuth} className="space-y-4">
@@ -263,6 +158,22 @@ const AuthForm = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
                       required
+                    />
+
+                    <input
+                      type="text"
+                      placeholder="Phone Number"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
+                    />
+
+                    <input
+                      type="text"
+                      placeholder="Profile Image URL (optional)"
+                      value={imageUrl}
+                      onChange={(e) => setImageUrl(e.target.value)}
+                      className="input w-full border border-orange-400 bg-white/10 text-white placeholder-white/70 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
                     />
 
                     <div className="relative">
@@ -288,7 +199,7 @@ const AuthForm = () => {
                       className="btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30"
                       disabled={loading}
                     >
-                      {loading ? 'Processing...' : 'Register'}
+                      {loading ? "Processing..." : "Register"}
                     </button>
                   </form>
 
@@ -352,7 +263,7 @@ const AuthForm = () => {
                       className="mt-5 btn bg-orange-500 hover:bg-orange-600 text-white font-semibold w-full transition duration-200 shadow-lg shadow-orange-500/30"
                       disabled={loading}
                     >
-                      {loading ? 'Processing...' : 'Login'}
+                      {loading ? "Processing..." : "Login"}
                     </button>
                   </form>
 

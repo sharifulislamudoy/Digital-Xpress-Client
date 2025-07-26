@@ -1,14 +1,17 @@
-import React, { createContext, useEffect, useState } from "react";
-import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signInWithPopup,
-    GoogleAuthProvider,
-    FacebookAuthProvider,
-    signOut,
-    onAuthStateChanged,
-} from "firebase/auth";
+// src/providers/AuthProvider.jsx
 
+import { createContext, useEffect, useState } from "react";
+import {
+  onAuthStateChanged,
+  signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import axios from "axios";
 import auth from "../FireBase-Credentials/Firebase__config__";
 
 export const AuthContext = createContext();
@@ -17,93 +20,108 @@ const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    // ======== EMAIL/PASSWORD AUTH ========
-    const signUpWithEmail = (email, password) => {
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
-    };
+  // Save user data to MongoDB
+  const saveUserToDB = async (userInfo) => {
+    try {
+      await axios.post("http://localhost:3000/users", userInfo); // backend endpoint to save user
+    } catch (error) {
+      console.error("Error saving user:", error);
+    }
+  };
 
-    const loginWithEmail = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
-    };
+  const registerWithEmail = async (email, password, name, photoURL, phone) => {
+    setLoading(true);
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(res.user, {
+        displayName: name,
+        photoURL,
+      });
+      const newUser = {
+        name,
+        email,
+        photoURL,
+        phone,
+      };
+      await saveUserToDB(newUser);
+      return res.user;
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // ======== SOCIAL AUTH ========
-    const loginWithGoogle = () => {
-        setLoading(true);
-        return signInWithPopup(auth, googleProvider);
-    };
+  const loginWithEmail = async (email, password) => {
+    setLoading(true);
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      return res.user;
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const loginWithFacebook = () => {
-        setLoading(true);
-        return signInWithPopup(auth, facebookProvider);
-    };
+  const loginWithGoogle = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      await saveUserToDB({
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        phone: user.phoneNumber || "",
+      });
+      return user;
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // ======== LOGOUT ========
-    const logOut = () => {
-        setLoading(true);
-        return signOut(auth);
-    };
+  const loginWithFacebook = async () => {
+    setLoading(true);
+    try {
+      const result = await signInWithPopup(auth, facebookProvider);
+      const user = result.user;
+      await saveUserToDB({
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        phone: user.phoneNumber || "",
+      });
+      return user;
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // ======== SAVE USER BACKEND ========
-    const saveUserToBackend = async (user) => {
-        const token = await user.getIdToken();
-        const userData = {
-            name: user.displayName || "Anonymous",
-            email: user.email || null,
-            uid: user.uid,
-            photoURL: user.photoURL || null,
-            phoneNumber: user.phoneNumber || null,
-            role: "user",
-        };
+  const logout = () => signOut(auth);
 
-        try {
-            await fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(userData),
-            });
-        } catch (error) {
-            console.error("User save error:", error);
-        }
-    };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currUser => {
+      setUser(currUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
-    // ======== AUTH STATE LISTENER ========
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
+  const authInfo = {
+    user,
+    loading,
+    registerWithEmail,
+    loginWithEmail,
+    loginWithGoogle,
+    loginWithFacebook,
+    logout,
+  };
 
-            if (currentUser) {
-                saveUserToBackend(currentUser);
-            }
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    // ======== CONTEXT VALUE ========
-    const authInfo = {
-        user,
-        loading,
-        signUpWithEmail,
-        loginWithEmail,
-        loginWithGoogle,
-        loginWithFacebook,
-        logOut,
-    };
-
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
