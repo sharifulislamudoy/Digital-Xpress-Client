@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BackGround from "../assets/Auth-Image.png";
 import Image from "../assets/DigitalXpress3.png";
-import { FaEye, FaEyeSlash, FaUserCircle, FaGoogle, FaFacebook } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUserCircle, FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Components/Contexts/AuthProvider";
@@ -12,7 +12,7 @@ const AuthForm = () => {
     registerWithEmail,
     loginWithEmail,
     loginWithGoogle,
-    loginWithFacebook,
+    loginWithGithub,
     loading,
   } = useContext(AuthContext);
 
@@ -49,12 +49,12 @@ const AuthForm = () => {
     }
   };
 
-  const handleFacebookAuth = async () => {
+  const handleGithubAuth = async () => {
     try {
-      await loginWithFacebook();
-      toast.success("Logged in with Facebook!");
+      await loginWithGithub();
+      toast.success("Logged in with GitHub!");
     } catch (err) {
-      toast.error(err.message || "Facebook login failed");
+      toast.error(err.message || "GitHub login failed");
     }
   };
 
@@ -276,13 +276,14 @@ const AuthForm = () => {
                       <FaGoogle className="text-xl" />
                     </button>
                     <button
-                      onClick={handleFacebookAuth}
+                      onClick={handleGithubAuth}
                       className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition"
                       disabled={loading}
                     >
-                      <FaFacebook className="text-xl" />
+                      <FaGithub className="text-xl" />
                     </button>
                   </div>
+
 
                   <p className="text-sm mt-4 text-center text-white/80">
                     Don't have an account?{" "}
