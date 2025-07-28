@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Johnson",
+    "role": "Tech Entrepreneur",
+    "avatar": "/images/avatars/avatar1.jpg",
+    "content": "Digital Xpress transformed our workflow. Their gadgets are not just high-quality but also incredibly durable. The delivery was lightning-fast!",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Michael Chen",
+    "role": "Software Developer",
+    "avatar": "/images/avatars/avatar2.jpg",
+    "content": "The customer support team went above and beyond when I had issues with my order. They resolved everything within hours. Truly exceptional service!",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "name": "Emma Williams",
+    "role": "Digital Content Creator",
+    "avatar": "/images/avatars/avatar3.jpg",
+    "content": "I'm blown away by the performance of the laptop I purchased. It handles all my editing software seamlessly. Best tech purchase this year!",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "David Rodriguez",
+    "role": "IT Manager",
+    "avatar": "/images/avatars/avatar4.jpg",
+    "content": "Our entire office is equipped with Digital Xpress products. Reliable performance and excellent bulk order discounts. Highly recommended for businesses!",
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Priya Patel",
+    "role": "Graphic Designer",
+    "avatar": "/images/avatars/avatar5.jpg",
+    "content": "The drawing tablet I bought works perfectly with all design software. The pressure sensitivity is incredibly accurate for detailed artwork.",
+    "rating": 5
+  },
+  {
+    "id": 6,
+    "name": "James Wilson",
+    "role": "University Student",
+    "avatar": "/images/avatars/avatar6.jpg",
+    "content": "Affordable yet powerful laptop for my computer science studies. Handles multiple VMs and coding environments without lag.",
+    "rating": 4
+  },
+  {
+    "id": 7,
+    "name": "Olivia Kim",
+    "role": "Photographer",
+    "avatar": "/images/avatars/avatar7.jpg",
+    "content": "The 4K monitor I purchased has perfect color accuracy for photo editing. It came professionally calibrated right out of the box!",
+    "rating": 5
+  },
+  {
+    "id": 8,
+    "name": "Thomas Baker",
+    "role": "Gaming Streamer",
+    "avatar": "/images/avatars/avatar8.jpg",
+    "content": "Zero latency on the gaming peripherals. My viewers have noticed improved gameplay since switching to Digital Xpress gear.",
+    "rating": 5
+  },
+  {
+    "id": 9,
+    "name": "Aisha Mohammed",
+    "role": "Telemedicine Doctor",
+    "avatar": "/images/avatars/avatar9.jpg",
+    "content": "The medical-grade monitor is perfect for reviewing patient scans. Crisp details and reliable performance for critical diagnostics.",
+    "rating": 5
+  },
+  {
+    "id": 10,
+    "name": "Daniel Park",
+    "role": "Music Producer",
+    "avatar": "/images/avatars/avatar10.jpg",
+    "content": "The audio interface has crystal clear preamps and ultra-low latency. Perfect for recording professional vocals and instruments.",
+    "rating": 5
+  },
+  {
+    "id": 11,
+    "name": "Sophia Garcia",
+    "role": "Remote Worker",
+    "avatar": "/images/avatars/avatar11.jpg",
+    "content": "The ergonomic keyboard saved me from wrist pain. Best investment I've made for my home office setup!",
+    "rating": 4
+  },
+  {
+    "id": 12,
+    "name": "Ethan Brown",
+    "role": "Cybersecurity Analyst",
+    "avatar": "/images/avatars/avatar12.jpg",
+    "content": "Enterprise-grade security features on their business laptops. Meets all our compliance requirements out of the box.",
+    "rating": 5
+  },
+  {
+    "id": 13,
+    "name": "Mia Johnson",
+    "role": "Video Editor",
+    "avatar": "/images/avatars/avatar13.jpg",
+    "content": "Renders 4K videos 40% faster than my previous workstation. The GPU performance is exceptional for the price.",
+    "rating": 5
+  },
+  {
+    "id": 14,
+    "name": "Lucas Smith",
+    "role": "Architect",
+    "avatar": "/images/avatars/avatar14.jpg",
+    "content": "Handles complex 3D architectural models smoothly. The mobile workstation stays cool even under heavy loads.",
+    "rating": 4
+  },
+  {
+    "id": 15,
+    "name": "Isabella Lee",
+    "role": "E-sports Player",
+    "avatar": "/images/avatars/avatar15.jpg",
+    "content": "240Hz gaming monitor gives me the competitive edge. Pixel response time is faster than more expensive brands I've tried.",
+    "rating": 5
+  },
+  {
+    "id": 16,
+    "name": "Noah Martinez",
+    "role": "VR Developer",
+    "avatar": "/images/avatars/avatar16.jpg",
+    "content": "The VR-ready PC bundle exceeded my expectations. Perfectly optimized for Unity and Unreal Engine development.",
+    "rating": 5
+  },
+  {
+    "id": 17,
+    "name": "Charlotte Wilson",
+    "role": "Digital Artist",
+    "avatar": "/images/avatars/avatar17.jpg",
+    "content": "The pen display has the best pressure sensitivity I've ever used. No parallax issues and perfect color reproduction.",
+    "rating": 5
+  },
+  {
+    "id": 18,
+    "name": "William Taylor",
+    "role": "Data Scientist",
+    "avatar": "/images/avatars/avatar18.jpg",
+    "content": "The workstation handles massive datasets effortlessly. Completed machine learning models 30% faster than before.",
+    "rating": 4
+  },
+  {
+    "id": 19,
+    "name": "Amelia Anderson",
+    "role": "Podcast Host",
+    "avatar": "/images/avatars/avatar19.jpg",
+    "content": "Professional sound quality with the podcasting bundle. Our listeners noticed the improved audio quality immediately.",
+    "rating": 5
+  },
+  {
+    "id": 20,
+    "name": "Benjamin Clark",
+    "role": "Film Director",
+    "avatar": "/images/avatars/avatar20.jpg",
+    "content": "The reference monitor is color-accurate enough for our film color grading. Matches perfectly with our studio monitors.",
+    "rating": 5
+  },
+  {
+    "id": 21,
+    "name": "Harper White",
+    "role": "UX Designer",
+    "avatar": "/images/avatars/avatar21.jpg",
+    "content": "The high-DPI display shows every detail in my designs. Perfect for creating pixel-perfect interfaces.",
+    "rating": 5
+  },
+  {
+    "id": 22,
+    "name": "Henry Harris",
+    "role": "Stock Trader",
+    "avatar": "/images/avatars/avatar22.jpg",
+    "content": "Six-monitor setup works flawlessly for trading. No lag even when displaying multiple 4K charts simultaneously.",
+    "rating": 4
+  },
+  {
+    "id": 23,
+    "name": "Evelyn Martin",
+    "role": "Biotech Researcher",
+    "avatar": "/images/avatars/avatar23.jpg",
+    "content": "The computational workstation processes our genomic data faster than the university's cluster. Incredible performance!",
+    "rating": 5
+  },
+  {
+    "id": 24,
+    "name": "Alexander Thompson",
+    "role": "CAD Engineer",
+    "avatar": "/images/avatars/avatar24.jpg",
+    "content": "Renders complex mechanical designs without slowdowns. The certified drivers for CAD software make all the difference.",
+    "rating": 5
+  },
+  {
+    "id": 25,
+    "name": "Abigail Lewis",
+    "role": "Online Teacher",
+    "avatar": "/images/avatars/avatar25.jpg",
+    "content": "The streaming setup works perfectly for my virtual classes. Crystal clear video and audio for all my students.",
+    "rating": 4
+  },
+  {
+    "id": 26,
+    "name": "Sebastian Walker",
+    "role": "AI Researcher",
+    "avatar": "/images/avatars/avatar26.jpg",
+    "content": "The GPU server trains our models twice as fast as cloud instances. Paid for itself in compute savings within months.",
+    "rating": 5
+  },
+  {
+    "id": 27,
+    "name": "Elizabeth Hall",
+    "role": "Journalist",
+    "avatar": "/images/avatars/avatar27.jpg",
+    "content": "Ultraportable laptop with all-day battery life. Perfect for filing stories from anywhere without worrying about charging.",
+    "rating": 5
+  },
+  {
+    "id": 28,
+    "name": "Jackson Allen",
+    "role": "3D Animator",
+    "avatar": "/images/avatars/avatar28.jpg",
+    "content": "Real-time viewport performance is smooth even with complex scenes. Reduced my render times significantly.",
+    "rating": 5
+  },
+  {
+    "id": 29,
+    "name": "Scarlett Young",
+    "role": "Twitch Streamer",
+    "avatar": "/images/avatars/avatar29.jpg",
+    "content": "The capture card delivers flawless 1080p60 streaming. My viewers love the improved stream quality.",
+    "rating": 4
+  },
+  {
+    "id": 30,
+    "name": "Daniel King",
+    "role": "CTO",
+    "avatar": "/images/avatars/avatar30.jpg",
+    "content": "Equipped our entire development team with Digital Xpress workstations. Productivity increased by 25% across the board.",
+    "rating": 5
+  }
+]

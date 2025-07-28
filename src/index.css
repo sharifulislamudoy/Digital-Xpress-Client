@@ -5,3 +5,19 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+
+.testimonial-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: #4b5563;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.testimonial-bullet-active {
+    background-color: #f97316;
+    width: 30px;
+    border-radius: 6px;
+}

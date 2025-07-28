@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Noise-Canceling Headphones",
+    "category": "Audio",
+    "price": 199.99,
+    "originalPrice": 249.99,
+    "discount": 20,
+    "image": "/images/headphones.jpg",
+    "rating": 4.8,
+    "isNew": true,
+    "trending": true,
+    "bestSeller": false
+  },
+  {
+    "id": 2,
+    "name": "Ultra HD Smart TV 55\"",
+    "category": "Televisions",
+    "price": 699.99,
+    "image": "/images/tv.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "trending": true,
+    "bestSeller": true
+  },
+  {
+    "id": 3,
+    "name": "Gaming Laptop Pro",
+    "category": "Computers",
+    "price": 1499.99,
+    "originalPrice": 1799.99,
+    "discount": 17,
+    "image": "/images/laptop.jpg",
+    "rating": 4.9,
+    "isNew": true,
+    "trending": true,
+    "bestSeller": true
+  },
+  {
+    "id": 4,
+    "name": "Smartphone X12",
+    "category": "Phones",
+    "price": 899.99,
+    "image": "/images/phone.jpg",
+    "rating": 4.7,
+    "isNew": false,
+    "trending": false,
+    "bestSeller": true
+  },
+  {
+    "id": 5,
+    "name": "Smart Watch Series 5",
+    "category": "Wearables",
+    "price": 249.99,
+    "image": "/images/watch.jpg",
+    "rating": 4.5,
+    "isNew": true,
+    "trending": true,
+    "bestSeller": false
+  },
+  {
+    "id": 6,
+    "name": "Wireless Charging Pad",
+    "category": "Accessories",
+    "price": 39.99,
+    "originalPrice": 49.99,
+    "discount": 20,
+    "image": "/images/charger.jpg",
+    "rating": 4.3,
+    "isNew": false,
+    "trending": false,
+    "bestSeller": true
+  }
+]
