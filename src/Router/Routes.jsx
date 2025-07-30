@@ -4,6 +4,7 @@ import {
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 import AuthForm from "../Pages/AuthForm";
+import ProductCategoriesPage from "../Pages/ProductCategoriesPage";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: 'authentication',
         Component: AuthForm,
+      },
+      {
+        path: 'products',
+        Component: ProductCategoriesPage,
       }
     ]
   },

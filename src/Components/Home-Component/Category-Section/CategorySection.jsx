@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // AOS styles
+import BgImg from '../../../assets/Category-Image1.jpg'
 
 const CategorySection = () => {
     // Initialize AOS
@@ -37,14 +38,16 @@ const CategorySection = () => {
     ];
 
     return (
-        <section className="bg-black py-25 text-white">
-            <div className="w-11/12 mx-auto text-center px-4">
+        <section className="py-25 text-white relative bg-cover bg-center" style={{backgroundImage: `url(${BgImg})`}}>
+            {/* Dark overlay with blur effect */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+            
+            <div className="w-11/12 mx-auto text-center px-4 relative z-10">
                 <div
                     className="text-center mb-8"
-                    data-aos="fade-up"
                     data-aos-delay="100"
                 >
-                    <h2 className="text-3xl font-bold" data-aos="fade-up">
+                    <h2 className="text-3xl font-bold" data-aos="fade-down">
                         Shop by <span className="text-orange-500">Category</span>
                     </h2>
                     <div className="w-24 h-1 bg-orange-400 mx-auto mt-2 rounded" data-aos="fade-left"></div>
@@ -59,7 +62,7 @@ const CategorySection = () => {
                         <a
                             href={cat.link}
                             key={idx}
-                            className="card bg-gray-800 hover:bg-gray-900 transition-all duration-300 p-5 rounded-xl text-center shadow hover:shadow-xl"
+                            className="card bg-gray-800/80 hover:bg-gray-900/90 transition-all duration-300 p-5 rounded-xl text-center shadow-lg hover:shadow-xl backdrop-blur-[2px]"
                             data-aos="fade-up"
                             data-aos-delay={300 + (idx * 100)}
                         >

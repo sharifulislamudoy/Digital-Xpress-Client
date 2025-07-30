@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Wireless Earbuds",
+    "originalPrice": 129.99,
+    "discountPrice": 79.99,
+    "discount": 38,
+    "image": "/images/products/earbuds.png",
+    "sold": 65,
+    "total": 100,
+    "endTime": "2025-07-29T10:00:00" 
+  },
+  {
+    "id": 2,
+    "name": "4K Action Camera",
+    "originalPrice": 299.99,
+    "discountPrice": 199.99,
+    "discount": 33,
+    "image": "/images/products/action-camera.png",
+    "sold": 42,
+    "total": 80,
+    "endTime": "2025-07-29T09:00:00"
+  }
+]

@@ -5,7 +5,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import TestimonialCard from './TestimonialCard';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // AOS styles
+import 'aos/dist/aos.css';
+import BgImg from '../../../assets/Testimonial-Image.jpg'
 
 const TestimonialsSection = () => {
     const [testimonials, setTestimonials] = useState([]);
@@ -42,7 +43,7 @@ const TestimonialsSection = () => {
     }, []);
 
     if (loading) {
-        return <div className="text-center py-12">Loading testimonials...</div>;
+        return <div className="text-center text-white bg-black py-12">Loading testimonials...</div>;
     }
 
     if (error) {
@@ -50,8 +51,11 @@ const TestimonialsSection = () => {
     }
 
     return (
-        <section className="bg-black py-25 text-white">
-            <div className="container mx-auto px-4">
+        <section className="relative bg-cover bg-center py-25 text-white" style={{backgroundImage: `url(${BgImg})`}}>
+            {/* Dark overlay with blur effect */}
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+            
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-down">
                         What Our <span className="text-orange-500">Customers Say</span>
@@ -63,20 +67,11 @@ const TestimonialsSection = () => {
                     <Swiper
                         modules={[Autoplay, Pagination]}
                         spaceBetween={30}
-                        slidesPerView={1} // Default for mobile
+                        slidesPerView={1}
                         breakpoints={{
-                            // When window width is >= 640px (sm)
-                            640: {
-                                slidesPerView: 1,
-                            },
-                            // When window width is >= 768px (md)
-                            768: {
-                                slidesPerView: 2,
-                            },
-                            // When window width is >= 1024px (lg)
-                            1024: {
-                                slidesPerView: 3,
-                            },
+                            640: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
                         }}
                         autoplay={{
                             delay: 5000,

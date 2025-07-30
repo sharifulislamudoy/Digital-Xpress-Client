@@ -3,6 +3,7 @@ import ProductTabs from './ProductTabs';
 import ProductCard from './ProductCard';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // AOS styles
+import BgImg from '../../../assets/Feature-Image.jpg'
 
 const FeaturedProducts = () => {
     const [products, setProducts] = useState([]);
@@ -72,8 +73,11 @@ const FeaturedProducts = () => {
     }
 
     return (
-        <section className="py-12 bg-black text-white">
-            <div className="container px-4 w-11/12 mx-auto">
+        <section className="py-12 bg-black text-white bg-cover bg-center relative" style={{backgroundImage: `url(${BgImg})`}}>
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+            
+            <div className="container px-4 w-11/12 mx-auto relative z-10">
                 <div 
                     className="text-center mb-8"
                     data-aos-delay="100"
