@@ -5,6 +5,7 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 import AuthForm from "../Pages/AuthForm";
 import ProductCategoriesPage from "../Pages/ProductCategoriesPage";
+import AboutSection from "../Pages/AboutSection";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
       {
         path: 'products',
         Component: ProductCategoriesPage,
+      },
+      {
+        path: 'about',
+        Component: AboutSection
       }
-    ]
+     ]
   },
 ]);

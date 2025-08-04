@@ -19,7 +19,7 @@ const Brands = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-down">
                         Top <span className="text-orange-500">Brands</span>
                     </h2>
-                    <div className="w-24 h-1 bg-orange-500 mx-auto rounded" data-aos="fade-left"></div>
+                    <div className="w-24 h-1 mt-2 bg-gradient-to-r from-orange-500 to-orange-300 mx-auto mb-8 transform origin-left" data-aos="fade-left"></div>
                 </div>
                 <Marquee
                     speed={50}

@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-down">
                         What Our <span className="text-orange-500">Customers Say</span>
                     </h2>
-                    <div className="w-24 h-1 bg-orange-500 mx-auto rounded" data-aos="fade-left"></div>
+                    <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-300 mx-auto mb-8 transform origin-left mt-2" data-aos="fade-left"></div>
                 </div>
 
                 <div className="w-11/12 mx-auto">

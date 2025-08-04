@@ -1,12 +1,16 @@
 import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import { Outlet } from 'react-router';
+import useScrollToTop from '../Components/Utils/useScrollToTop';
+import Footer from '../Components/Footer/Footer';
 
 const MainLayout = () => {
+    useScrollToTop();
     return (
         <div>
             <Navbar />
             <Outlet />
+            <Footer />
         </div>
     );
 };

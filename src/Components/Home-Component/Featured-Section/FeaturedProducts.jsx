@@ -82,10 +82,10 @@ const FeaturedProducts = () => {
                     className="text-center mb-8"
                     data-aos-delay="100"
                 >
-                    <h2 className="text-3xl font-bold" data-aos="fade-down">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-down">
                         Featured <span className="text-orange-500">Products</span>
                     </h2>
-                    <div className="w-24 h-1 bg-orange-500 mx-auto mt-2 rounded" data-aos="fade-left"></div>
+                    <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-300 mx-auto mb-8 transform origin-left mt-2" data-aos="fade-left"></div>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
@@ -110,7 +110,7 @@ const FeaturedProducts = () => {
 
                 <div 
                     className="text-center mt-10"
-                    data-aos="fade-up"
+                    data-aos="fade-down"
                     data-aos-delay="600"
                 >
                     <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-bold py-2 px-6 rounded-full transition-colors duration-300">

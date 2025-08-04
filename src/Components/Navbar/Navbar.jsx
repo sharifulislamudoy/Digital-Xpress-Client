@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import './Navbar.css';
 import Image from '../../assets/DigitalXpress3.png';
 import { AuthContext } from '../Contexts/AuthProvider';
 import NavLinks from '../Utils/NavLinks';
@@ -76,7 +75,7 @@ const Navbar = () => {
                         
                         {/* Right - User Actions and Become Seller Button */}
                         <div className="flex items-center space-x-4">
-                            <button className="btn btn-ghost text-orange-500 hover:bg-orange-500 hover:text-white">
+                            <button className="btn btn-ghost text-orange-500 hover:bg-orange-500 hover:text-white rounded-2xl">
                                 Become a Seller
                             </button>
                             {user ? (

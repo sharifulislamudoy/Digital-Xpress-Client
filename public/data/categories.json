@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Mobile Phones",
+        "image": "/images/categories/mobile.png",
+        "link": "/products/mobile-phones"
+    },
+    {
+        "name": "Laptops & Computers",
+        "image": "/images/categories/laptop.png",
+        "link": "/products/laptops-computers"
+    },
+    {
+        "name": "Gadgets & Accessories",
+        "image": "/images/categories/gadgets.png",
+        "link": "/products/gadgets-accessories"
+    },
+    {
+        "name": "Home Appliances",
+        "image": "/images/categories/appliances.png",
+        "link": "/products/home-appliances"
+    }
+]
