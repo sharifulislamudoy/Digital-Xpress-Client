@@ -1,7 +1,8 @@
 // AboutSection.jsx
 import { FaCheckCircle, FaShippingFast, FaHeadset, FaTags, FaShieldAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
 const AboutSection = () => {
     const features = [
@@ -33,6 +34,52 @@ const AboutSection = () => {
         { value: "24/7", label: "Customer Support" },
         { value: "98%", label: "Positive Reviews" }
     ];
+
+    const [testimonials, setTestimonials] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const testimonialsPerPage = 3;
+
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const response = await fetch('/data/testimonials.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch testimonials');
+                }
+                const data = await response.json();
+                // Limit content to 15 words
+                const processedTestimonials = data.map(testimonial => ({
+                    ...testimonial,
+                    shortContent: testimonial.content.split(' ').slice(0, 15).join(' ') +
+                        (testimonial.content.split(' ').length > 15 ? '...' : '')
+                }));
+                setTestimonials(processedTestimonials);
+            } catch (error) {
+                console.error('Error fetching testimonials:', error);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
+
+    // Auto-play functionality
+    useEffect(() => {
+        if (testimonials.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentPage(prev => prev % totalPages + 1);
+        }, 5000); // Change every 5 seconds
+
+        return () => clearInterval(interval);
+    }, [testimonials.length, testimonialsPerPage]);
+
+    // Calculate pagination
+    const indexOfLastTestimonial = currentPage * testimonialsPerPage;
+    const indexOfFirstTestimonial = indexOfLastTestimonial - testimonialsPerPage;
+    const currentTestimonials = testimonials.slice(indexOfFirstTestimonial, indexOfLastTestimonial);
+    const totalPages = Math.ceil(testimonials.length / testimonialsPerPage);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <section className="bg-black py-20 px-4 md:px-10 lg:px-24 relative overflow-hidden">
@@ -173,48 +220,71 @@ const AboutSection = () => {
                     className="mt-24"
                 >
                     <h3 className="text-3xl font-bold text-white mb-12 text-center">What Our Customers Say</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                quote: "Digital Xpress has the best prices and fastest delivery I've experienced in Bangladesh. Highly recommended!",
-                                author: "Rahim Khan",
-                                rating: 5
-                            },
-                            {
-                                quote: "Their customer support helped me choose the perfect smartphone for my needs. Very professional service.",
-                                author: "Fatima Ahmed",
-                                rating: 4
-                            },
-                            {
-                                quote: "Authentic products with proper warranty. I trust Digital Xpress for all my tech purchases.",
-                                author: "Jamal Uddin",
-                                rating: 5
-                            }
-                        ].map((testimonial, index) => (
-                            <div key={index} className="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-orange-500 transition duration-300">
-                                <div className="flex mb-4">
-                                    {Array.from({ length: 5 }).map((_, i) => (
-                                        <span
-                                            key={i}
-                                            className={`text-lg ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-600'}`}
-                                        >
-                                            ★
-                                        </span>
-                                    ))}
-                                </div>
-                                <p className="text-gray-300 italic mb-6">"{testimonial.quote}"</p>
-                                <div className="flex items-center">
-                                    <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold mr-3">
-                                        {testimonial.author.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <div className="font-medium text-white">{testimonial.author}</div>
-                                        <div className="text-sm text-gray-400">Verified Customer</div>
-                                    </div>
-                                </div>
+
+                    {testimonials.length > 0 ? (
+                        <>
+                            <div className="relative overflow-hidden h-[400px] md:h-[350px]">
+                                <AnimatePresence mode="wait" custom={currentPage}>
+                                    <motion.div
+                                        key={currentPage}
+                                        custom={currentPage}
+                                        initial={{ x: 300, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        exit={{ x: -300, opacity: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="grid grid-cols-1 md:grid-cols-3 gap-8 absolute inset-0"
+                                    >
+                                        {currentTestimonials.map((testimonial) => (
+                                            <motion.div
+                                                key={testimonial.id}
+                                                className="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-orange-500 transition duration-300 h-full flex flex-col"
+                                            >
+                                                <div className="flex mb-4">
+                                                    {Array.from({ length: 5 }).map((_, i) => (
+                                                        <span
+                                                            key={i}
+                                                            className={`text-lg ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-600'}`}
+                                                        >
+                                                            ★
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                                <p className="text-gray-300 italic mb-6 flex-grow">"{testimonial.shortContent}"</p>
+                                                <div className="flex items-center mt-auto">
+                                                    <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold mr-3">
+                                                        {testimonial.name.charAt(0)}
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-medium text-white">{testimonial.name}</div>
+                                                        <div className="text-sm text-gray-400">{testimonial.role}</div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
-                        ))}
-                    </div>
+
+                            {/* Pagination controls */}
+                            <div className="flex justify-center mt-12 space-x-2">
+                                {Array.from({ length: totalPages }).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => {
+                                            setCurrentPage(index + 1);
+                                        }}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentPage === index + 1
+                                                ? 'bg-orange-500 w-6'
+                                                : 'bg-gray-600 hover:bg-gray-400'
+                                            }`}
+                                        aria-label={`Go to page ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <div className="text-center text-gray-400 py-12">Loading testimonials...</div>
+                    )}
                 </motion.div>
             </div>
         </section>

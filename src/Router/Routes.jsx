@@ -6,6 +6,7 @@ import Home from "../Pages/Home";
 import AuthForm from "../Pages/AuthForm";
 import ProductCategoriesPage from "../Pages/ProductCategoriesPage";
 import AboutSection from "../Pages/AboutSection";
+import ContactPage from "../Pages/ContactPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: 'about',
         Component: AboutSection
+      },
+      {
+        path: 'contact',
+        Component: ContactPage
       }
      ]
   },
