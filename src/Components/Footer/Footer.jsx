@@ -1,10 +1,44 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowUp } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import Logo from "../Utils/Logo";
 import Image from '../../assets/DigitalXpress3.png'
 
 const Footer = () => {
+    const [showScroll, setShowScroll] = useState(false);
+
+    const checkScrollTop = () => {
+        if (!showScroll && window.pageYOffset > 400) {
+            setShowScroll(true);
+        } else if (showScroll && window.pageYOffset <= 400) {
+            setShowScroll(false);
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', checkScrollTop);
+        return () => window.removeEventListener('scroll', checkScrollTop);
+    }, [showScroll]);
+
     return (
-        <footer className="bg-gray-950 text-gray-300 pt-16 pb-8 px-4 md:px-10 lg:px-24 ">
+        <footer className="bg-gray-950 text-gray-300 pt-16 pb-8 px-4 md:px-10 lg:px-24 relative">
+            {/* Scroll to Top Button */}
+            {showScroll && (
+                <button
+                    onClick={scrollToTop}
+                    className="fixed bottom-8 right-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 z-50"
+                    aria-label="Scroll to top"
+                >
+                    <FaArrowUp className="text-xl" />
+                </button>
+            )}
+
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 

@@ -30,7 +30,7 @@ const ProductCategoriesPage = () => {
         paginate(page);
         window.scrollTo({
             top: 0,
-            behavior: "smooth" // for smooth scrolling
+            behavior: "smooth"
         });
     };
 
