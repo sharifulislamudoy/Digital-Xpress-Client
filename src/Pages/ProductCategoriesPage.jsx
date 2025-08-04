@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScrollToTop from '../Components/Utils/useScrollToTop';
+import CollapsibleSection from '../Components/Products/CollapsibleSection';
 
 const ProductCategoriesPage = () => {
     const { categorySlug } = useParams();
@@ -430,10 +431,9 @@ const ProductCategoriesPage = () => {
                             transition={{ delay: 0.3 }}
                             className="hidden md:block w-72 flex-shrink-0"
                         >
-                            <div className="sticky top-4 space-y-4">
+                            <div className="sticky top-30 inset-0 space-y-4">
                                 {/* Categories */}
-                                <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700 shadow-lg">
-                                    <h3 className="font-semibold text-orange-400 mb-3">Categories</h3>
+                                <CollapsibleSection title="Categories" defaultOpen={true}>
                                     <ul className="space-y-2">
                                         {categories.map((category, index) => (
                                             <motion.li
@@ -450,11 +450,10 @@ const ProductCategoriesPage = () => {
                                             </motion.li>
                                         ))}
                                     </ul>
-                                </div>
+                                </CollapsibleSection>
 
                                 {/* Brands */}
-                                <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700 shadow-lg">
-                                    <h3 className="font-semibold text-orange-400 mb-3">Brands</h3>
+                                <CollapsibleSection title="Brands">
                                     <div className="space-y-2">
                                         {brands.map(brand => (
                                             <motion.div
@@ -473,11 +472,10 @@ const ProductCategoriesPage = () => {
                                             </motion.div>
                                         ))}
                                     </div>
-                                </div>
+                                </CollapsibleSection>
 
                                 {/* Price Ranges */}
-                                <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700 shadow-lg">
-                                    <h3 className="font-semibold text-orange-400 mb-3">Price Range</h3>
+                                <CollapsibleSection title="Price Range">
                                     <div className="space-y-2">
                                         {priceRanges.map((range, index) => (
                                             <motion.div
@@ -497,11 +495,10 @@ const ProductCategoriesPage = () => {
                                             </motion.div>
                                         ))}
                                     </div>
-                                </div>
+                                </CollapsibleSection>
 
                                 {/* Ratings */}
-                                <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700 shadow-lg">
-                                    <h3 className="font-semibold text-orange-400 mb-3">Customer Ratings</h3>
+                                <CollapsibleSection title="Customer Ratings">
                                     <div className="space-y-2">
                                         {[5, 4, 3, 2, 1].map(rating => (
                                             <motion.div
@@ -526,12 +523,11 @@ const ProductCategoriesPage = () => {
                                             </motion.div>
                                         ))}
                                     </div>
-                                </div>
+                                </CollapsibleSection>
 
                                 {/* Features */}
                                 {allFeatures.length > 0 && (
-                                    <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl border border-gray-700 shadow-lg">
-                                        <h3 className="font-semibold text-orange-400 mb-3">Features</h3>
+                                    <CollapsibleSection title="Features">
                                         <div className="grid grid-cols-2 gap-2">
                                             {allFeatures.map(feature => (
                                                 <motion.div
@@ -550,7 +546,7 @@ const ProductCategoriesPage = () => {
                                                 </motion.div>
                                             ))}
                                         </div>
-                                    </div>
+                                    </CollapsibleSection>
                                 )}
 
                                 <button
