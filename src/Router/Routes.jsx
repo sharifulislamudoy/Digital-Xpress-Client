@@ -4,9 +4,11 @@ import {
 import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 import AuthForm from "../Pages/AuthForm";
-import ProductCategoriesPage from "../Pages/ProductCategoriesPage";
 import AboutSection from "../Pages/AboutSection";
 import ContactPage from "../Pages/ContactPage";
+import ProductPage from "../Pages/ProductPage";
+import ProductDetailsPage from "../Pages/ProductDetailsPage";
+import ProductCategoryPage from "../Pages/ProductCategoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +25,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'products',
-        Component: ProductCategoriesPage,
+        Component: ProductPage
+      },
+      {
+        path: 'product/:id',
+        Component: ProductDetailsPage,
+      },
+      {
+        path: 'products/:categorySlug',
+        Component: ProductCategoryPage
       },
       {
         path: 'about',
@@ -33,6 +43,6 @@ export const router = createBrowserRouter([
         path: 'contact',
         Component: ContactPage
       }
-     ]
+    ]
   },
 ]);

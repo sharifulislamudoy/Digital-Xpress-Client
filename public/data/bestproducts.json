@@ -5,10 +5,14 @@
     "brand": "Apple",
     "price": 1399,
     "rating": 5,
-    "features": ["5G", "OLED", "256GB"],
+    "features": [
+      "5G",
+      "OLED",
+      "256GB"
+    ],
     "reviews": 1145,
     "category": "mobile-phones",
-    "image": "/images/iphone15pro.jpg",
+    "image": "https://i.ibb.co.com/4ZnZW3WZ/3174096.jpg",
     "popularity": 95,
     "date": "2024-11-15"
   },
@@ -18,8 +22,12 @@
     "brand": "Dell",
     "price": 1699,
     "rating": 5,
-    "features": ["SSD", "4K Display", "16GB RAM"],
-     "reviews": 1145,
+    "features": [
+      "SSD",
+      "4K Display",
+      "16GB RAM"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/dellxps15.jpg",
     "popularity": 87,
@@ -31,8 +39,12 @@
     "brand": "Google",
     "price": 899,
     "rating": 4,
-    "features": ["5G", "OLED", "128GB"],
-     "reviews": 1145,
+    "features": [
+      "5G",
+      "OLED",
+      "128GB"
+    ],
+    "reviews": 1145,
     "category": "mobile-phones",
     "image": "/images/pixel8.jpg",
     "popularity": 82,
@@ -44,8 +56,11 @@
     "brand": "Bose",
     "price": 329,
     "rating": 4,
-    "features": ["Noise Canceling", "Bluetooth"],
-     "reviews": 1145,
+    "features": [
+      "Noise Canceling",
+      "Bluetooth"
+    ],
+    "reviews": 1145,
     "category": "gadgets-accessories",
     "image": "/images/boseqc45.jpg",
     "popularity": 89,
@@ -57,8 +72,11 @@
     "brand": "Samsung",
     "price": 899,
     "rating": 4,
-    "features": ["Smart", "Energy Efficient"],
-     "reviews": 1145,
+    "features": [
+      "Smart",
+      "Energy Efficient"
+    ],
+    "reviews": 1145,
     "category": "home-appliances",
     "image": "/images/samsungwasher.jpg",
     "popularity": 78,
@@ -70,8 +88,12 @@
     "brand": "Apple",
     "price": 1099,
     "rating": 5,
-    "features": ["Liquid Retina", "128GB", "5G"],
-     "reviews": 1145,
+    "features": [
+      "Liquid Retina",
+      "128GB",
+      "5G"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/ipadprom2.jpg",
     "popularity": 90,
@@ -83,8 +105,12 @@
     "brand": "OnePlus",
     "price": 799,
     "rating": 4,
-    "features": ["5G", "AMOLED", "256GB"],
-     "reviews": 1145,
+    "features": [
+      "5G",
+      "AMOLED",
+      "256GB"
+    ],
+    "reviews": 1145,
     "category": "mobile-phones",
     "image": "/images/oneplus11.jpg",
     "popularity": 84,
@@ -96,8 +122,12 @@
     "brand": "Apple",
     "price": 429,
     "rating": 5,
-    "features": ["GPS", "Heart Rate", "Water Resistant"],
-     "reviews": 1145,
+    "features": [
+      "GPS",
+      "Heart Rate",
+      "Water Resistant"
+    ],
+    "reviews": 1145,
     "category": "gadgets-accessories",
     "image": "/images/applewatch9.jpg",
     "popularity": 91,
@@ -109,8 +139,11 @@
     "brand": "LG",
     "price": 599,
     "rating": 4,
-    "features": ["Smart", "Convection"],
-     "reviews": 1145,
+    "features": [
+      "Smart",
+      "Convection"
+    ],
+    "reviews": 1145,
     "category": "home-appliances",
     "image": "/images/lgoven.jpg",
     "popularity": 76,
@@ -122,8 +155,12 @@
     "brand": "HP",
     "price": 1399,
     "rating": 5,
-    "features": ["SSD", "Touchscreen", "13.5-inch"],
-     "reviews": 1145,
+    "features": [
+      "SSD",
+      "Touchscreen",
+      "13.5-inch"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/hpspectre.jpg",
     "popularity": 86,
@@ -135,8 +172,12 @@
     "brand": "Xiaomi",
     "price": 999,
     "rating": 4,
-    "features": ["5G", "AMOLED", "256GB"],
-     "reviews": 1145,
+    "features": [
+      "5G",
+      "AMOLED",
+      "256GB"
+    ],
+    "reviews": 1145,
     "category": "mobile-phones",
     "image": "/images/xiaomi13pro.jpg",
     "popularity": 83,
@@ -148,8 +189,12 @@
     "brand": "Samsung",
     "price": 899,
     "rating": 4,
-    "features": ["AMOLED", "256GB", "S Pen"],
-     "reviews": 1145,
+    "features": [
+      "AMOLED",
+      "256GB",
+      "S Pen"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/galaxytabs9.jpg",
     "popularity": 85,
@@ -161,8 +206,11 @@
     "brand": "Apple",
     "price": 249,
     "rating": 5,
-    "features": ["Noise Canceling", "Bluetooth"],
-     "reviews": 1145,
+    "features": [
+      "Noise Canceling",
+      "Bluetooth"
+    ],
+    "reviews": 1145,
     "category": "gadgets-accessories",
     "image": "/images/airpodspro2.jpg",
     "popularity": 93,
@@ -174,8 +222,11 @@
     "brand": "Dyson",
     "price": 549,
     "rating": 4,
-    "features": ["HEPA Filter", "Smart"],
-     "reviews": 1145,
+    "features": [
+      "HEPA Filter",
+      "Smart"
+    ],
+    "reviews": 1145,
     "category": "home-appliances",
     "image": "/images/dysonpurifier.jpg",
     "popularity": 80,
@@ -187,8 +238,12 @@
     "brand": "Asus",
     "price": 1999,
     "rating": 5,
-    "features": ["RTX 4080", "32GB RAM", "1TB SSD"],
-     "reviews": 1145,
+    "features": [
+      "RTX 4080",
+      "32GB RAM",
+      "1TB SSD"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/asusrog.jpg",
     "popularity": 88,
@@ -200,8 +255,12 @@
     "brand": "Nothing",
     "price": 699,
     "rating": 4,
-    "features": ["5G", "OLED", "128GB"],
-     "reviews": 1145,
+    "features": [
+      "5G",
+      "OLED",
+      "128GB"
+    ],
+    "reviews": 1145,
     "category": "mobile-phones",
     "image": "/images/nothingphone2.jpg",
     "popularity": 81,
@@ -213,8 +272,12 @@
     "brand": "Fitbit",
     "price": 159,
     "rating": 4,
-    "features": ["Heart Rate", "GPS", "Sleep Tracking"],
-     "reviews": 1145,
+    "features": [
+      "Heart Rate",
+      "GPS",
+      "Sleep Tracking"
+    ],
+    "reviews": 1145,
     "category": "gadgets-accessories",
     "image": "/images/fitbitcharge6.jpg",
     "popularity": 87,
@@ -226,8 +289,11 @@
     "brand": "Ninja",
     "price": 129,
     "rating": 4,
-    "features": ["Digital", "4-Quart"],
-     "reviews": 1145,
+    "features": [
+      "Digital",
+      "4-Quart"
+    ],
+    "reviews": 1145,
     "category": "home-appliances",
     "image": "/images/ninjaairfryer.jpg",
     "popularity": 85,
@@ -239,8 +305,12 @@
     "brand": "Lenovo",
     "price": 1599,
     "rating": 5,
-    "features": ["SSD", "14-inch", "16GB RAM"],
-     "reviews": 1145,
+    "features": [
+      "SSD",
+      "14-inch",
+      "16GB RAM"
+    ],
+    "reviews": 1145,
     "category": "laptops-computers",
     "image": "/images/thinkpadx1.jpg",
     "popularity": 84,
@@ -252,11 +322,355 @@
     "brand": "Samsung",
     "price": 1799,
     "rating": 4,
-    "features": ["Foldable", "5G", "512GB"],
-     "reviews": 1145,
+    "features": [
+      "Foldable",
+      "5G",
+      "512GB"
+    ],
+    "reviews": 1145,
     "category": "mobile-phones",
     "image": "/images/zfold5.jpg",
     "popularity": 89,
     "date": "2024-11-05"
+  },
+  {
+    "id": 21,
+    "name": "Sony WH-1000XM5",
+    "brand": "Sony",
+    "price": 399,
+    "rating": 5,
+    "features": [
+      "Noise Canceling",
+      "Bluetooth",
+      "30hr Battery"
+    ],
+    "reviews": 892,
+    "category": "gadgets-accessories",
+    "image": "/images/sonyxm5.jpg",
+    "popularity": 92,
+    "date": "2024-10-12"
+  },
+  {
+    "id": 22,
+    "name": "Instant Pot Duo",
+    "brand": "Instant Pot",
+    "price": 99,
+    "rating": 4,
+    "features": [
+      "7-in-1",
+      "Pressure Cooker",
+      "Slow Cooker"
+    ],
+    "reviews": 1203,
+    "category": "home-appliances",
+    "image": "/images/instantpot.jpg",
+    "popularity": 88,
+    "date": "2024-08-20"
+  },
+  {
+    "id": 23,
+    "name": "Razer Blade 15",
+    "brand": "Razer",
+    "price": 2299,
+    "rating": 5,
+    "features": [
+      "RTX 4070",
+      "240Hz",
+      "1TB SSD"
+    ],
+    "reviews": 567,
+    "category": "laptops-computers",
+    "image": "/images/razerblade15.jpg",
+    "popularity": 85,
+    "date": "2024-11-18"
+  },
+  {
+    "id": 24,
+    "name": "Nintendo Switch OLED",
+    "brand": "Nintendo",
+    "price": 349,
+    "rating": 5,
+    "features": [
+      "7-inch OLED",
+      "64GB",
+      "Portable"
+    ],
+    "reviews": 1456,
+    "category": "gadgets-accessories",
+    "image": "/images/switcholed.jpg",
+    "popularity": 94,
+    "date": "2024-09-25"
+  },
+  {
+    "id": 25,
+    "name": "KitchenAid Stand Mixer",
+    "brand": "KitchenAid",
+    "price": 429,
+    "rating": 5,
+    "features": [
+      "10-speed",
+      "5-Quart",
+      "Tilt-Head"
+    ],
+    "reviews": 978,
+    "category": "home-appliances",
+    "image": "/images/kitchenaid.jpg",
+    "popularity": 90,
+    "date": "2024-12-15"
+  },
+  {
+    "id": 26,
+    "name": "Motorola Edge 40",
+    "brand": "Motorola",
+    "price": 599,
+    "rating": 4,
+    "features": [
+      "5G",
+      "144Hz Display",
+      "256GB"
+    ],
+    "reviews": 654,
+    "category": "mobile-phones",
+    "image": "/images/motoedge40.jpg",
+    "popularity": 79,
+    "date": "2024-08-05"
+  },
+  {
+    "id": 27,
+    "name": "Microsoft Surface Pro 9",
+    "brand": "Microsoft",
+    "price": 1299,
+    "rating": 5,
+    "features": [
+      "12th Gen Intel",
+      "16GB RAM",
+      "2-in-1"
+    ],
+    "reviews": 723,
+    "category": "laptops-computers",
+    "image": "/images/surfacepro9.jpg",
+    "popularity": 87,
+    "date": "2024-10-08"
+  },
+  {
+    "id": 28,
+    "name": "Garmin Forerunner 265",
+    "brand": "Garmin",
+    "price": 349,
+    "rating": 4,
+    "features": [
+      "AMOLED",
+      "GPS",
+      "HR Monitor"
+    ],
+    "reviews": 432,
+    "category": "gadgets-accessories",
+    "image": "/images/garmin265.jpg",
+    "popularity": 83,
+    "date": "2024-11-22"
+  },
+  {
+    "id": 29,
+    "name": "Breville Barista Express",
+    "brand": "Breville",
+    "price": 699,
+    "rating": 5,
+    "features": [
+      "Espresso Machine",
+      "Grinder",
+      "Steam Wand"
+    ],
+    "reviews": 587,
+    "category": "home-appliances",
+    "image": "/images/breville.jpg",
+    "popularity": 89,
+    "date": "2024-12-01"
+  },
+  {
+    "id": 30,
+    "name": "Oppo Find X6 Pro",
+    "brand": "Oppo",
+    "price": 1199,
+    "rating": 4,
+    "features": [
+      "5G",
+      "1-inch Sensor",
+      "256GB"
+    ],
+    "reviews": 321,
+    "category": "mobile-phones",
+    "image": "/images/oppox6pro.jpg",
+    "popularity": 84,
+    "date": "2024-09-12"
+  },
+  {
+    "id": 31,
+    "name": "Acer Predator Helios 16",
+    "brand": "Acer",
+    "price": 1899,
+    "rating": 5,
+    "features": [
+      "i9-13900HX",
+      "RTX 4080",
+      "MiniLED"
+    ],
+    "reviews": 276,
+    "category": "laptops-computers",
+    "image": "/images/predatorhelios.jpg",
+    "popularity": 86,
+    "date": "2024-10-28"
+  },
+  {
+    "id": 32,
+    "name": "JBL Flip 6",
+    "brand": "JBL",
+    "price": 129,
+    "rating": 4,
+    "features": [
+      "Portable",
+      "Waterproof",
+      "12hr Playtime"
+    ],
+    "reviews": 845,
+    "category": "gadgets-accessories",
+    "image": "/images/jblflip6.jpg",
+    "popularity": 82,
+    "date": "2024-08-30"
+  },
+  {
+    "id": 33,
+    "name": "iRobot Roomba j7+",
+    "brand": "iRobot",
+    "price": 799,
+    "rating": 4,
+    "features": [
+      "Self-Emptying",
+      "AI Navigation",
+      "WiFi"
+    ],
+    "reviews": 693,
+    "category": "home-appliances",
+    "image": "/images/roombaj7.jpg",
+    "popularity": 85,
+    "date": "2024-11-14"
+  },
+  {
+    "id": 34,
+    "name": "Honor Magic 5 Pro",
+    "brand": "Honor",
+    "price": 899,
+    "rating": 4,
+    "features": [
+      "5G",
+      "Triple Camera",
+      "5100mAh"
+    ],
+    "reviews": 412,
+    "category": "mobile-phones",
+    "image": "/images/honormagic5.jpg",
+    "popularity": 80,
+    "date": "2024-09-08"
+  },
+  {
+    "id": 35,
+    "name": "Logitech MX Keys Mini",
+    "brand": "Logitech",
+    "price": 99,
+    "rating": 5,
+    "features": [
+      "Wireless",
+      "Backlit",
+      "Multi-Device"
+    ],
+    "reviews": 923,
+    "category": "gadgets-accessories",
+    "image": "/images/mxkeysmini.jpg",
+    "popularity": 87,
+    "date": "2024-10-10"
+  },
+  {
+    "id": 36,
+    "name": "Miele Vacuum Cleaner",
+    "brand": "Miele",
+    "price": 549,
+    "rating": 5,
+    "features": [
+      "HEPA",
+      "Bagged",
+      "1500W"
+    ],
+    "reviews": 378,
+    "category": "home-appliances",
+    "image": "/images/miele.jpg",
+    "popularity": 84,
+    "date": "2024-12-20"
+  },
+  {
+    "id": 37,
+    "name": "Asus Zenbook 14",
+    "brand": "Asus",
+    "price": 1099,
+    "rating": 4,
+    "features": [
+      "OLED",
+      "16GB RAM",
+      "1TB SSD"
+    ],
+    "reviews": 512,
+    "category": "laptops-computers",
+    "image": "/images/zenbook14.jpg",
+    "popularity": 83,
+    "date": "2024-11-08"
+  },
+  {
+    "id": 38,
+    "name": "Vivo X90 Pro",
+    "brand": "Vivo",
+    "price": 1099,
+    "rating": 4,
+    "features": [
+      "Zeiss Optics",
+      "120W Charging",
+      "5G"
+    ],
+    "reviews": 287,
+    "category": "mobile-phones",
+    "image": "/images/vivox90.jpg",
+    "popularity": 81,
+    "date": "2024-10-03"
+  },
+  {
+    "id": 39,
+    "name": "Anker 737 Power Bank",
+    "brand": "Anker",
+    "price": 199,
+    "rating": 5,
+    "features": [
+      "24,000mAh",
+      "140W Output",
+      "LCD Screen"
+    ],
+    "reviews": 634,
+    "category": "gadgets-accessories",
+    "image": "/images/anker737.jpg",
+    "popularity": 89,
+    "date": "2024-09-18"
+  },
+  {
+    "id": 40,
+    "name": "Philips Hue Starter Kit",
+    "brand": "Philips",
+    "price": 199,
+    "rating": 4,
+    "features": [
+      "3 Bulbs",
+      "Bridge",
+      "Smart Control"
+    ],
+    "reviews": 756,
+    "category": "home-appliances",
+    "image": "/images/philipshue.jpg",
+    "popularity": 86,
+    "date": "2024-11-28"
   }
 ]

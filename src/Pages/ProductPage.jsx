@@ -2,10 +2,9 @@ import { ReTitle } from 're-title';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
-import useScrollToTop from '../Components/Utils/useScrollToTop';
 import CollapsibleSection from '../Components/Products/CollapsibleSection';
 
-const ProductCategoriesPage = () => {
+const ProductPage = () => {
     const { categorySlug } = useParams();
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -431,7 +430,7 @@ const ProductCategoriesPage = () => {
                             transition={{ delay: 0.3 }}
                             className="hidden md:block w-72 flex-shrink-0"
                         >
-                            <div className="sticky top-30 inset-0 space-y-4">
+                            <div className="sticky top-37 inset-0 space-y-4">
                                 {/* Categories */}
                                 <CollapsibleSection title="Categories" defaultOpen={true}>
                                     <ul className="space-y-2">
@@ -763,9 +762,9 @@ const ProductCategoriesPage = () => {
                                                         <button className="btn bg-gradient-to-r from-orange-600 to-amber-600 border-none text-white hover:from-orange-700 hover:to-amber-700 w-full shadow-lg">
                                                             Add to Cart
                                                         </button>
-                                                        <button className="btn btn-outline btn-warning w-full">
+                                                        <Link to={`/product/${product.id}`} className="btn btn-outline btn-warning w-full">
                                                             Quick View
-                                                        </button>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -829,4 +828,4 @@ const ProductCategoriesPage = () => {
     );
 };
 
-export default ProductCategoriesPage;
+export default ProductPage;
