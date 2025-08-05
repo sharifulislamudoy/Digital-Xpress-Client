@@ -231,6 +231,7 @@ const ProductPage = () => {
                         </button>
                     </div>
 
+                    
                     {/* Mobile Filters Panel */}
                     <AnimatePresence>
                         {showMobileFilters && (
@@ -239,11 +240,11 @@ const ProductPage = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: '100%' }}
                                 transition={{ type: 'spring', damping: 25 }}
-                                className="fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-sm overflow-y-auto"
+                                className="fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-sm overflow-y-auto overflow-x-hidden"
                             >
-                                <div className="bg-gray-800/90 border border-gray-700 rounded-xl shadow-2xl m-4 p-6 max-h-[90vh] overflow-y-auto">
+                                <div className="bg-gray-800/90 border border-gray-700 rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto m-2 p-3 sm:m-4 sm:p-6">
                                     <div className="flex justify-between items-center mb-6">
-                                        <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
+                                        <h2 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
                                             Filters
                                         </h2>
                                         <button
@@ -255,14 +256,14 @@ const ProductPage = () => {
                                     </div>
 
                                     {/* Filters */}
-                                    <div className="space-y-6 text-white">
+                                    <div className="space-y-6 text-white text-sm sm:text-base">
                                         {/* Categories */}
                                         <div className="collapse collapse-plus bg-gray-700/50 rounded-xl border border-gray-600">
                                             <input type="checkbox" defaultChecked />
                                             <div className="collapse-title font-semibold text-orange-400">
                                                 Categories
                                             </div>
-                                            <div className="collapse-content">
+                                            <div className="collapse-content max-h-60 overflow-y-auto">
                                                 <ul className="space-y-2">
                                                     {categories.map((category, index) => (
                                                         <motion.li
@@ -288,7 +289,7 @@ const ProductPage = () => {
                                             <div className="collapse-title font-semibold text-orange-400">
                                                 Brands
                                             </div>
-                                            <div className="collapse-content space-y-2">
+                                            <div className="collapse-content space-y-2 max-h-60 overflow-y-auto">
                                                 {brands.map(brand => (
                                                     <motion.div
                                                         key={brand}
@@ -308,13 +309,13 @@ const ProductPage = () => {
                                             </div>
                                         </div>
 
-                                        {/* Price */}
+                                        {/* Price Range */}
                                         <div className="collapse collapse-plus bg-gray-700/50 rounded-xl border border-gray-600">
                                             <input type="checkbox" defaultChecked />
                                             <div className="collapse-title font-semibold text-orange-400">
                                                 Price Range
                                             </div>
-                                            <div className="collapse-content space-y-2">
+                                            <div className="collapse-content space-y-2 max-h-60 overflow-y-auto">
                                                 {priceRanges.map((range, index) => (
                                                     <motion.div
                                                         key={index}
@@ -341,7 +342,7 @@ const ProductPage = () => {
                                             <div className="collapse-title font-semibold text-orange-400">
                                                 Customer Ratings
                                             </div>
-                                            <div className="collapse-content space-y-2">
+                                            <div className="collapse-content space-y-2 max-h-60 overflow-y-auto">
                                                 {[5, 4, 3, 2, 1].map(rating => (
                                                     <motion.div
                                                         key={rating}
@@ -358,9 +359,9 @@ const ProductPage = () => {
                                                         />
                                                         <label htmlFor={`rating-${rating}`} className="flex items-center cursor-pointer">
                                                             {Array.from({ length: 5 }).map((_, i) => (
-                                                                <span key={i} className={`text-lg ${i < rating ? 'text-yellow-400' : 'text-gray-600'}`}>★</span>
+                                                                <span key={i} className={`text-base sm:text-lg ${i < rating ? 'text-yellow-400' : 'text-gray-600'}`}>★</span>
                                                             ))}
-                                                            <span className="ml-1 text-sm text-gray-400">& Up</span>
+                                                            <span className="ml-1 text-xs text-gray-400">& Up</span>
                                                         </label>
                                                     </motion.div>
                                                 ))}
@@ -374,7 +375,7 @@ const ProductPage = () => {
                                                 <div className="collapse-title font-semibold text-orange-400">
                                                     Features
                                                 </div>
-                                                <div className="collapse-content space-y-2">
+                                                <div className="collapse-content space-y-2 max-h-60 overflow-y-auto">
                                                     {allFeatures.map(feature => (
                                                         <motion.div
                                                             key={feature}
@@ -398,13 +399,13 @@ const ProductPage = () => {
 
                                     <div className="flex flex-col gap-2 mt-6">
                                         <button
-                                            className="btn btn-block bg-gradient-to-r from-orange-600 to-amber-600 border-none text-white hover:from-orange-700 hover:to-amber-700 shadow-lg"
+                                            className="btn btn-block text-sm sm:text-base bg-gradient-to-r from-orange-600 to-amber-600 border-none text-white hover:from-orange-700 hover:to-amber-700 shadow-lg"
                                             onClick={() => setShowMobileFilters(false)}
                                         >
                                             Apply Filters
                                         </button>
                                         <button
-                                            className="btn btn-block btn-outline btn-warning"
+                                            className="btn btn-block btn-outline btn-warning text-sm sm:text-base"
                                             onClick={() => {
                                                 setSelectedBrands([]);
                                                 setSelectedPriceRange(null);
@@ -420,6 +421,7 @@ const ProductPage = () => {
                             </motion.div>
                         )}
                     </AnimatePresence>
+
 
                     {/* Main Content */}
                     <div className="flex flex-col md:flex-row gap-6">
